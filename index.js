@@ -90,6 +90,5 @@ app.get('/api/products', (req,res) => {
     res.json(yarnstash);
 });
 
-
 const PORT = process.env.PORT || 5100;
 app.listen(PORT, () => console.log(`Server running on ${PORT}`));
