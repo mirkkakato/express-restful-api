@@ -85,9 +85,47 @@ let yarnstash =
     }
   ]
 
-// route to get all the objects in yarnStash
+// route to get all the products in yarnStash
 app.get('/api/products', (req,res) => {
-    res.json(yarnstash);
+  res.status(200).json(
+    {
+      status: 'success',
+      results: yarnstash.length,
+      data: yarnstash
+    });
+});
+
+// route to get one product based on id
+app.get('/api/products/:brand', (req,res) => {
+  const brand = req.params.brand.toLowerCase();
+    const product = yarnstash.find(product => product.brand.toLowerCase() === brand);
+    if (!product) {
+     return res.status(404).json({ msg: "No products found for this brand." });
+    }
+  res.json(product);
+});
+
+// route to delete one based on id
+app.delete('/api/products/:brand', (req,res) => {
+  const brand = String(req.params.brand.toLowerCase());
+  const product = yarnstash.find(product => product.brand.toLowerCase() === brand);
+
+  if (product)
+  {
+    yarnstash = yarnstash.filter(product => product.brand.toLowerCase() != brand);
+    res.status(200).json(
+      {
+        brand : brand
+      }
+    )
+  } else {
+    res.status(404).json(
+      {
+        msg: "Not found!"
+      }
+    )
+  };
+
 });
 
 const PORT = process.env.PORT || 5100;
