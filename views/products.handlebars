@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yarn Stash</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h2>Yarns in my stash:</h1>
+  <ul>
+    {{#each yarnstash}}
+      <li>
+        <h3>{{brand}} {{name}}</h3>
+        <p><strong>Colour:</strong> {{colourName}}</p>
+        <p><strong>Fiber content:</strong> {{fiber}}</p>
+        <p><strong>Yarn weight:</strong> {{weight}}</p>
+        <p><strong>Skein weight and length:</strong> {{skeinweight}}g / {{length}}</p>
+        <p><strong>Skeins owned:</strong> {{skeinsOwned}}</p>
+        <p><strong>Notes:</strong> {{notes}}</p>
+        <p><strong>ID:</strong> {{id}}</p>
+      </li>
+    {{/each}}
+  </ul>
+</body>
+</html>
+
